@@ -79,8 +79,9 @@ body {
 }
 
 .topBar {
-  border-bottom: 40px solid #000000;
   margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px  #000000;
 }
 
 .topBar .wrap {
@@ -104,15 +105,14 @@ body {
   }
 }
 
-.topBar a {
-  display: block;
-  text-decoration: none;
-  color: #000000;
-  font-size: 1.25rem;
+.sticky-top{
+  position: sticky;
+  top: 0;
+  z-index: 1020;
 }
 
 .topBar a:hover {
-  color: #6A33F8;
+  color: #9c9c9c;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -131,13 +131,22 @@ body {
 }
 
 .topBar-menu a {
-  padding: 36px 24px;
-  background-color: #FFFFFF;
+  padding: 18px 24px;
+  font-weight: normal;
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .topBar-menu a:hover {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+.ms-2{
+  margin-right: 8px;
 }
 
 .topBar-menu li:last-child a {
@@ -162,7 +171,7 @@ body {
   }
   .topBar-menu a {
     text-align: center;
-    padding: 15px;
+    padding: 18px;
     font-size: 1rem;
   }
   .topBar-menu a:hover {
@@ -170,7 +179,7 @@ body {
     color: #FFFFFF;
   }
   .topBar-menu li:last-child a {
-    padding: 15px;
+    padding: 18px;
   }
 }
 
@@ -192,8 +201,11 @@ body {
 }
 
 .logo {
-  padding: 36px 0;
+  padding: 18px 0;
   font-size: 1.5rem;
+  display: block;
+  text-decoration: none;
+  color: #000000;
 }
 
 @media (max-width: 767px) {
@@ -204,12 +216,13 @@ body {
 
 .banner {
   position: relative;
-  background-image: url("https://i.imgur.com/3ewLAKn.png");
+  background-image: url(../image//gabriel-alenius-lTrbjFd8Iwo-unsplash.jpeg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 420px;
   margin-bottom: 60px;
+  border-radius:4px;
 }
 
 .banner-text {
@@ -219,12 +232,15 @@ body {
   left: 50px;
   bottom: 50px;
   font-weight: normal;
+  padding-left: 8px;
+  border-left:3px solid #ffffff;
 }
 
-.section-title {
+.recommendation-title {
   text-align: center;
   font-size: 1.75rem;
   margin-bottom: 30px;
+  color:#ffffff;
 }
 
 .bedAdvantage {
@@ -236,19 +252,39 @@ body {
           justify-content: space-between;
   margin-bottom: 60px;
 }
-
+.bedAdvantage-title{
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+}
+.position-relative{
+  position: relative;
+}
 .bedAdvantage-img {
   max-height: 140px;
   -o-object-fit: cover;
      object-fit: cover;
   margin-bottom: 10px;
+  border-radius:4px;
 }
 
 .bedAdvantage-text {
   text-align: center;
   font-size: 1.25rem;
+  font-weight: normal;
+  letter-spacing: 6px;
+  color:#fff;
+  text-shadow: 1px 2px 8px #000000;
+  position: absolute;
+  bottom:40%;
+  left:38%;
 }
-
+.compare-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+  color:#000000;
+}
 .furniture-compare {
   background-color: #F8F8F8;
   padding: 50px 0 60px 0;
@@ -278,6 +314,7 @@ body {
 
 .compare-table th {
   font-size: 1.25rem;
+  font-weight: normal;
 }
 
 .compare-table tr {
@@ -287,10 +324,11 @@ body {
 .compare-table tr td:first-child {
   text-align: left;
   font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .compare-table .material-icons {
-  color: #6A33FF;
+  color: #2aaeeb;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
@@ -315,13 +353,10 @@ body {
 }
 
 .recommendation {
-  background-color: #301E5F;
+  background-color: #2aaeeb;
   padding: 60px 0;
 }
 
-.recommendation h3 {
-  color: #FFFFFF;
-}
 
 @media (max-width: 767px) {
   .recommendation {
@@ -359,6 +394,7 @@ body {
   margin-left: 30px;
   min-width: 350px;
   background-color: #FFFFFF;
+  border-radius: 4px;
 }
 
 .recommendation-card img {
@@ -367,6 +403,8 @@ body {
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .recommend-content {
@@ -406,6 +444,12 @@ body {
 
 .transport {
   padding: 30px 0;
+}
+
+.transport-title{
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
 }
 
 @media (max-width: 767px) {
@@ -480,8 +524,8 @@ body {
 }
 
 .transport-card .cardImg {
-  width: 115px;
-  height: 115px;
+  width: 100px;
+  height: 100px;
   border: 3px solid #000000;
   border-radius: 50%;
   display: -webkit-box;
@@ -497,7 +541,7 @@ body {
 }
 
 .transport-card .material-icons {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 .transport-card h4 {
@@ -507,8 +551,8 @@ body {
 
 @media (max-width: 767px) {
   .transport-card .cardImg {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
   }
 }
 
@@ -539,6 +583,8 @@ body {
   margin-right: 2%;
   width: 23%;
   margin-bottom: 30px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;   
 }
 
 .productCard img {
@@ -546,6 +592,8 @@ body {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;   
 }
 
 .productCard a {
@@ -560,11 +608,12 @@ body {
 }
 
 .productCard a:hover {
-  background-color: #301E5F;
+  background-color: #2aaeeb;
 }
 
 .productCard a, .productCard h3 {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 @media (max-width: 900px) {
@@ -601,10 +650,17 @@ body {
   padding: 60px 0;
 }
 
+.shoppingCart-title{
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
+}
+
 .shoppingCart-table {
   margin: 0 auto;
   border-collapse: collapse;
   font-size: 1.25rem;
+  font-weight: 400;
 }
 .shoppingCart-table th, .shoppingCart-table td {
   padding: 15px;
@@ -656,7 +712,7 @@ body {
 }
 
 .discardBtn a:hover {
-  color: #6A33F8;
+  color: #2aaeeb;
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
 }
@@ -678,6 +734,12 @@ body {
 
 .orderInfo {
   padding: 60px 0;
+}
+
+.orderInfo-title{
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 30px;
 }
 
 .orderInfo-form {
@@ -727,7 +789,7 @@ body {
 
 .orderInfo-btn {
   display: block;
-  min-width: 255px;
+  min-width: 365px;
   min-height: 48px;
   background-color: #000000;
   color: #FFFFFF;
@@ -739,7 +801,7 @@ body {
 }
 
 .orderInfo-btn:hover {
-  background-color: #301E5F;
+  background-color: #2aaeeb;
 }
 
 .orderPage-list {

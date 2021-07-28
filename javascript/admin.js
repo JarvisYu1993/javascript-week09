@@ -1,18 +1,17 @@
 const orderPageList = document.querySelector('.orderPage-tableList');
 const discardAllBtn = document.querySelector('.discardAllBtn');
 let orderData = [];
-
+let config = {
+  headers: {
+    'Authorization': token,
+  }
+}
 function init(){
     getOrders();
 }
 //取出訂單資料
 function getOrders(){
-    axios.get(`${adminApi}/${apiPath}/orders`,{
-        headers: {
-          'Authorization': token,
-  
-        }
-      }).then(res=>{
+    axios.get(`${adminApi}/${apiPath}/orders`,config).then(res=>{
         orderData = res.data.orders;
         ordersList();
         renderC3();
@@ -21,32 +20,31 @@ function getOrders(){
 
 //刪除訂單
 function deletOrderItem(id){
-    axios.delete(`${adminApi}/${apiPath}/orders/${id}`, {
-      headers: {
-        'Authorization': token,
-      }
-    })
-      .then(function(response){
+    axios.delete(`${adminApi}/${apiPath}/orders/${id}`, config)
+      .then(function(res){
         alert("刪除該筆訂單成功");
-        getOrders();
+        orderData = res.data.orders;
+        ordersList();
+        renderC3();
       })
     
 }
 //刪除全部訂單
 function deleteOrderAll(e){
     e.preventDefault();
-    axios.delete(`${adminApi}/${apiPath}/orders`,{
-        headers:{
-            'Authorization': token,
-        }
-    }).then(res=>{
+    if(orderData !== 0){
+      axios.delete(`${adminApi}/${apiPath}/orders`,config).then(res=>{
         alert('成功刪除全部訂單');
-        getOrders();
+        orderData = res.data.orders;
+        ordersList();
+        renderC3();
+    }).catch(error=>{
+      console.log(error)
     })
+    }
 }
 // 修改訂單
 function changeOrderStatus(status,id){
-    console.log(status,id);
     let newStatus;
     if(status=="true"){
       newStatus=false;
@@ -58,14 +56,14 @@ function changeOrderStatus(status,id){
         "id": id,
         "paid": newStatus
       }
-    } ,{
-      headers: {
-        'Authorization': token,
-      }
-    })
-    .then(function(reponse){
+    } ,config)
+    .then(function(res){
       alert("修改訂單成功");
-      getOrders();
+      orderData = res.data.orders;
+      ordersList();
+      renderC3();
+    }).catch(error=>{
+      console.log(error)
     })
   }
 function ordersList(){
@@ -73,13 +71,13 @@ function ordersList(){
     orderData.forEach((item)=>{
         const timeStamp = new Date(item.createdAt*1000);
         const orderTime = `${timeStamp.getFullYear()}/${timeStamp.getMonth()+1}/${timeStamp.getDate()}`;
-        
         let productStr = "";
+        let orderStatus = "";
         item.products.forEach(function(productItem){
             productStr += `<p>${productItem.title}x${productItem.quantity}</p>`
         })    
         if(item.paid==true){
-            orderStatus="已處理"
+            orderStatus="已處理";
           }else{
             orderStatus = "未處理"
           }
@@ -158,15 +156,14 @@ init();
 orderPageList.addEventListener('click',function(e){
     e.preventDefault();
     let targetClass = e.target.getAttribute('class');
-    let orderId = e.target.getAttribute('data-id');
+    let orderId = e.target.dataset.id;
     if(targetClass == 'delSingleOrder-Btn'){
         deletOrderItem(orderId);
         return;
-    }
-    if (targetClass == "orderStatus"){
-        let status = e.target.getAttribute("data-status");
-        changeOrderStatus(status,orderId);
-        return;
-    }
+    }else if (targetClass == "orderStatus"){
+      let status = e.target.getAttribute("data-status");
+      changeOrderStatus(status,orderId);
+      return;
+    }  
 })
 discardAllBtn.addEventListener('click',deleteOrderAll);

@@ -4,7 +4,7 @@ const totalPrice =  document.querySelector(".js-total");
 const shoppingCartTableList = document.querySelector('.shoppingCart-tableList');
 const discardAllBtn = document.querySelector('.discardAllBtn');
 const orderInfoForm = document.querySelector('.orderInfo-form');
-const orderInfoMessage = document.querySelectorAll('.orderInfo-message'); //陣列  
+const orderInfoMessage = document.querySelectorAll('.orderInfo-message'); //陣列 
 let productData = [];
 let cartData = [];
 //商品頁面初始化
@@ -61,6 +61,8 @@ function getCarts(){
         cartData = res.data.carts;
         totalPrice.textContent = toThousands(res.data.finalTotal);
         cartsRender();
+    }).catch(error=>{
+        console.log(error)
     })
 }
 //刪除品項
@@ -72,32 +74,50 @@ function deleteCarts(e){
     }
     axios.delete(`${api}/${apiPath}/carts/${cartId}`).then(res=>{
         alert('成功刪除訂單');
-        getCarts();
-    })        
+        cartData = res.data.carts;
+        totalPrice.textContent = toThousands(res.data.finalTotal);
+        cartsRender();
+    })  .catch(error=>{
+        alert("無法刪除訂單")
+    })      
 }
 //刪除全部品項
 function deleteCartsAll(e){
     e.preventDefault();
-    axios.delete(`${api}/${apiPath}/carts`).then(res=>{
-        alert('已刪除全部訂單')
-        getCarts();
-    }).catch(error=>{
-        alert('購物車已清空，請勿重複點擊');
-    })
+    if(cartData.length !== 0){
+        axios.delete(`${api}/${apiPath}/carts`).then(res=>{
+            alert('已刪除全部訂單')
+            cartData = res.data.carts;
+            totalPrice.textContent = toThousands(res.data.finalTotal);
+            cartsRender();
+        }).catch(error=>{
+            alert('購物車已清空，請勿重複點擊');
+        })
+    }
 }
 //加入購物車
 function addCarts(e){
     e.preventDefault();
+    let addCartId = e.target.getAttribute('id');
     let productId = e.target.dataset.id;
 	let quantity = 1;
-	cartData.forEach((item) => {
+    if(addCartId !== "addCardBtn"){
+        return;
+    }
+    cartData.forEach((item) => {
         if(item.product.id === productId){
             quantity = item.quantity +=1;
+            console.log(e.target.id)
         }
-	});
+    });
 	let data = { data: { productId, quantity } };
     axios.post(`${api}/${apiPath}/carts`,data).then(res=>{
-        getCarts();
+        alert("加入到購物車")
+        cartData = res.data.carts;
+        totalPrice.textContent = toThousands(res.data.finalTotal);
+        cartsRender();
+    }).catch(error=>{
+        console.log(error)
     })
 }
 //送出訂單
@@ -114,7 +134,6 @@ function postOrder(e){
 
     if(cartData.length === 0){
         alert('購物車尚未加入商品');
-        return;
     }else{
         if(customerName.value ===''||nameCode.test(customerName.value)||customerName.value.length <2){
             orderInfoMessage[0].textContent = '必填';
@@ -138,20 +157,21 @@ function postOrder(e){
         }else{
             let obj = {
                 user:{
-                    "name": customerName.value,
-                    "tel": customerPhone.value,
-                    "email": customerEmail.value,
-                    "address": customerAddress.value,
-                    "payment": tradeWay.value    
+                    name: customerName.value.trim(),
+                    tel: customerPhone.value.trim(),
+                    email: customerEmail.value.trim(),
+                    address: customerAddress.value.trim(),
+                    payment: tradeWay.value    
                 }
             };
             axios.post(`${api}/${apiPath}/orders`,{ data: obj }).then(res=>{
                 alert('訂單建立成功')
-                customerName.value = "";
-                customerPhone.value = "";
-                customerEmail.value = "";
-                customerAddress.value = "";
-                tradeWay.value = "ATM";
+                orderInfoForm.reset();
+                orderInfoMessage[0].textContent = "";
+                orderInfoMessage[1].textContent = "";
+                orderInfoMessage[2].textContent = "";
+                orderInfoMessage[3].textContent = "";
+
                 getCarts();
             }).catch(error=>{
                 alert('訂單建立失敗')
@@ -162,11 +182,11 @@ function postOrder(e){
 //商品資料渲染
 function renderProducts(product){
     let dataStr = ``;
-    product.forEach((item) => {
+    product.forEach((item,index) => {
     dataStr += `
     <li class="productCard">
     <h4 class="productType">新品</h4>
-    <img src="${item.images}" alt="">
+    <img src="${item.images}" alt="picture${index+1}">
     <a href="#" id="addCardBtn" data-id="${item.id}">加入購物車</a>
     <h3>${item.title}</h3>
     <del class="originPrice">NT$${toThousands(item.origin_price)}</del>
@@ -211,4 +231,4 @@ function toThousands(x) {
     let parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return parts.join(".");
-  }
+}

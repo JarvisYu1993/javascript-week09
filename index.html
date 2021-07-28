@@ -4,58 +4,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>眠眠傢俱</title>
+    <link rel="shortcut icon" href="./image/眠眠.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">  
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
-    <nav class="topBar">
+    <nav class="topBar sticky-top">
         <div class="wrap">
-            <h1><a href="#" class="logo">WOWOROOM</a></h1>
+            <h1><a href="#" class="logo">眠眠傢俱</a></h1>
             <span class="material-icons menuToggle">
                 menu
             </span>
             <ul class="topBar-menu">
-                <li><a href="#bedAdvantage">床墊優勢</a></li>
-                <li><a href="#recommendation">好評推薦</a></li>
-                <li><a href="#transport">運送方式</a></li>
-                <li><a href="#orderInfo">立即預訂</a></li>
+                <li><a href="#bedAdvantage"><span class="material-icons ms-2">
+                    check_circle_outline
+                    </span><span>眠眠優勢</span></a></li>
+                <li><a href="#recommendation"><span class="material-icons ms-2">
+                    thumb_up
+                    </span><span>好評推薦</span></a></li>
+                <li><a href="#transport"><span class="material-icons ms-2">
+                    local_shipping
+                    </span><span>運送方式</span></a></li>
+                <li><a href="#orderInfo"><span class="material-icons ms-2">
+                    shopping_bag
+                    </span><span>立即預訂</span></a></li>
             </ul>
         </div>
     </nav>
     <section class="wrap" id="bedAdvantage">
         <div class="banner">
-            <h2 class="banner-text">窩窩家居<br>跟您一起品味生活</h2>
+            <h2 class="banner-text">眠眠家居，讓您體驗好生活</h2>
         </div>
-        <h3 class="section-title">床墊優勢</h3>
+        <h3 class="bedAdvantage-title">眠眠優勢</h3>
         <ul class="bedAdvantage">
-            <li>
+            <li class="position-relative">
                 <img class="bedAdvantage-img" src="https://i.imgur.com/tR426y5.png" alt="原木料環保">
-                <p class="bedAdvantage-text">原木料環保</p>
+                <p class="bedAdvantage-text">實木原料</p>
             </li>
-            <li>
+            <li class="position-relative">
                 <img class="bedAdvantage-img" src="https://i.imgur.com/Fd2MiBb.png" alt="好收納">
-                <p class="bedAdvantage-text">好收納</p>
+                <p class="bedAdvantage-text">輕鬆收納</p>
             </li>
-            <li>
+            <li class="position-relative">
                 <img class="bedAdvantage-img" src="https://i.imgur.com/5n1uTFh.png" alt="好組裝">
-                <p class="bedAdvantage-text">好組裝</p>
+                <p class="bedAdvantage-text">輕鬆組裝</p>
             </li>
         </ul>
     </section>
     <section class="furniture-compare">
         <div class="wrap">
-            <h3 class="section-title">家具比較</h3>
+            <h3 class="compare-title">傢俱比較</h3>
             <div class="overflowWrap">
                 <table class="compare-table">
                     <thead>
                         <tr>
                             <th></th>
-                            <th>窩窩系統模組家具</th>
-                            <th class="text-muted">組合式家具</th>
-                            <th class="text-muted">實木家具</th>
+                            <th>眠眠系統家具</th>
+                            <th class="text-muted">組合式傢俱</th>
+                            <th class="text-muted">實木傢俱</th>
                         </tr>
                     </thead>
                     <tr>
@@ -94,7 +103,7 @@
     </section>
     <section class="recommendation" id="recommendation">
         <div class="wrap">
-            <h3 class="section-title">好評推薦</h3>
+            <h3 class="recommendation-title">好評推薦</h3>
             <div class="recommendation-wall">
                 <ul class="gallery-top">
                     <li class="recommendation-card">
@@ -103,11 +112,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/I9L7WOr.png" alt="">
                                 <div>
-                                    <p>王六角</p>
+                                    <p>林**</p>
                                     <p class="recommend-text">Jodan 雙人床架</p>
                                 </div>
                             </div>
-                            <p>CP值很高。</p>
+                            <p class="recommend-message">"組裝輕易上手"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -116,11 +125,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/CUFGfay.png" alt="">
                                 <div>
-                                    <p>Leaf</p>
+                                    <p>陳**</p>
                                     <p class="recommend-text">Antony 雙人床架</p>
                                 </div>
                             </div>
-                            <p>很喜歡～還有送三年保固～</p>
+                            <p>"很喜歡～還有送三年保固～"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -129,7 +138,7 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/8WwZsLS.png" alt="">
                                 <div>
-                                    <p>美濃鄧子琪</p>
+                                    <p>大和**</p>
                                     <p class="recommend-text">Charles 系列儲物組合</p>
                                 </div>
                             </div>
@@ -142,11 +151,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/NycuPVy.png" alt="">
                                 <div>
-                                    <p>isRaynotArray</p>
+                                    <p>Antony **</p>
                                     <p class="recommend-text">Antony 雙人床架</p>
                                 </div>
                             </div>
-                            <p>物超所值!</p>
+                            <p>"物超所值!"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -155,11 +164,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/zdFOQIv.png" alt="">
                                 <div>
-                                    <p>程鮭魚</p>
+                                    <p>鮭魚**</p>
                                     <p class="recommend-text">Louvre 雙人床架</p>
                                 </div>
                             </div>
-                            <p>租屋用剛剛好</p>
+                            <p>"租屋用剛剛好"</p>
                         </div>
                     </li>
                 </ul>
@@ -170,11 +179,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/W7fyzp2.png" alt="">
                                 <div>
-                                    <p>小杰</p>
+                                    <p>周**</p>
                                     <p class="recommend-text">Louvre 雙人床架</p>
                                 </div>
                             </div>
-                            <p>非常舒適，有需要會再回購</p>
+                            <p>"非常舒適，有需要會再回購"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -183,11 +192,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/8O1cOnG.png" alt="">
                                 <div>
-                                    <p>江八角</p>
+                                    <p>江**</p>
                                     <p class="recommend-text">Charles 雙人床架</p>
                                 </div>
                             </div>
-                            <p>品質不錯～</p>
+                            <p>"品質不錯～"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -196,11 +205,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/C0NDvSA.png" alt="">
                                 <div>
-                                    <p>juni讚神</p>
+                                    <p>Amber **</p>
                                     <p class="recommend-text">Antony 床邊桌</p>
                                 </div>
                             </div>
-                            <p>讚ㄉ！</p>
+                            <p>"讚ㄉ！"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -209,11 +218,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/hUsTZDm.png" alt="">
                                 <div>
-                                    <p>久安說安安</p>
+                                    <p>安**</p>
                                     <p class="recommend-text">Antony 單人床架</p>
                                 </div>
                             </div>
-                            <p>一個躺剛剛好。</p>
+                            <p>"一個躺剛剛好。"</p>
                         </div>
                     </li>
                     <li class="recommendation-card">
@@ -222,11 +231,11 @@
                             <div class="recommend-img">
                                 <img src="https://i.imgur.com/3ako6QX.png" alt="">
                                 <div>
-                                    <p>PeiQun</p>
+                                    <p>April **</p>
                                     <p class="recommend-text">Antony 雙人床架</p>
                                 </div>
                             </div>
-                            <p>睡起來很舒適</p>
+                            <p>"睡起來很舒適"</p>
                         </div>
                     </li>
                 </ul>
@@ -234,7 +243,7 @@
         </div>
     </section>
     <section class="transport" id="transport">
-        <h3 class="section-title">運送方式</h3>
+        <h3 class="transport-title">運送方式</h3>
         <ul class="transport-intro">
             <li class="transport-card">
                 <div class="cardImg">
@@ -276,16 +285,12 @@
     </section>
     <section class="wrap productDisplay">
         <select name="" class="productSelect">
-            <!-- <option value="全部" selected>全部</option>
-            <option value="床架">床架</option>
-            <option value="收納">收納</option>
-            <option value="窗簾">窗簾</option> -->
         </select>
         <ul class="productWrap">
         </ul>
     </section>
     <section class="shoppingCart">
-        <h3 class="section-title">我的購物車</h3>
+        <h3 class="shoppingCart-title">我的購物車</h3>
         <div class="overflowWrap">
             <table class="shoppingCart-table">
                 <thead>
@@ -315,7 +320,7 @@
         </div>
     </section>
     <section class="orderInfo wrap" id="orderInfo">
-        <h3 class="section-title">填寫預訂資料</h3>
+        <h3 class="orderInfo-title">填寫預訂資料</h3>
         <form action="" class="orderInfo-form">
             <div class="orderInfo-formGroup">
                 <label for="customerName" class="orderInfo-label">姓名</label>
